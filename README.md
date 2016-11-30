@@ -1,4 +1,4 @@
 npm run
 
     * "build": "webpack",
-    * "serve": "webpack-dev-server --inline --hot --port 3000"
+    * "serve": "webpack-dev-server --inline --hot --port 3001"
