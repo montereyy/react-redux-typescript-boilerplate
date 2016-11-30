@@ -10,16 +10,25 @@ let config = {
 	srcFolder: 'src'
 };
 
+let appEntries = [
+	`./${config.srcFolder}/index.tsx`
+];
+
+if(process.env.ENVIRONMENT !== 'production') {
+	[].unshift.apply(appEntries, [
+		'webpack-dev-server/client?http://localhost:3001',
+		'webpack/hot/only-dev-server',
+	])
+} else {
+	console.log(process.env.ENVIRONMENT)
+}
+
 module.exports = {
 	resolve: {
 		extensions: ['', '.ts', '.tsx', '.js', '.jsx']
 	},
 	entry  : {
-		app: [
-			'webpack-dev-server/client?http://localhost:3001',
-			'webpack/hot/only-dev-server',
-			`./${config.srcFolder}/index.tsx`
-		]
+		app: appEntries
 	},
 	output : {
 		filename         : '[name].bundle.js',
